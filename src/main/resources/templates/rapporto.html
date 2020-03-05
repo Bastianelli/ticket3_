@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Wish: Rapporto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="/rapporto/add" method="POST">
+		<p>
+			<font color="red"></font>
+		</p>
+		<table>
+			<tr>
+				<td><label for="denominazione">Denominazione Cliente</label></td>
+				<td><input id="denominazione" name="denominazione" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="cognome">Cognome Tecnico</label></td>
+				<td><input id="cognome" name="cognome" type="text" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="aggiungi"/>
+		<input type="submit" value = "cerca" formaction = "/rapporto/find" formmethod = "GET"/>
+	</form>
+
+	
+</body>
+</html>

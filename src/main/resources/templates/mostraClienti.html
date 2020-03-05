@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>cliente Trovato</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>denominazione</th>
+				<th>indirizzo</th>
+				<th>localita</th>
+				<th>CAP</th>
+				<th>Citta</th>
+				<th>partita IVA</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:if="${clienti.empty}">
+				<td colspan="2">Nessun Cliente Trovato</td>
+			</tr>
+			<tr th:each="cliente : ${clienti}">
+				<td><span th:text="${cliente.denominazione}"> Nome: </span></td>
+				<td><span th:text="${cliente.indirizzo}"> Cognome: </span></td>
+				<td><span th:text="${cliente.localita}"> Nome: </span></td>
+				<td><span th:text="${cliente.cap}"> Cognome: </span></td>
+				<td><span th:text="${cliente.citta}"> Nome: </span></td>
+				<td><span th:text="${cliente.partitaIva}"> Cognome: </span></td>
+			</tr>
+			
+		</tbody>
+	</table>
+</body>
+</html>

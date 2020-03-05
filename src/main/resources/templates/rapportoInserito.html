@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Rapporto Inserito</title>
+</head>
+<body>
+	<h1>Nuovo Rapporto inserito</h1>
+	<p th:text="'Cliente: ' + ${rapporto.cliente.denominazione}" />
+	<p th:text="'Tecnico: ' + ${rapporto.tecnico.cognome}" />
+<!-- 	<p th:text="'Indirizzo: ' + ${rapporto.cliente.indirizzo}" />
+	<p th:text="'Localita: ' + ${rapporto.cliente.localita}" />
+	<p th:text="'CAP: ' + ${rapporto.cliente.cap}" />
+	<p th:text="'Citta: ' + ${rapporto.cliente.citta}" />
+	<p th:text="'Partita IVA: ' + ${rapporto.cliente.partitaIva}" />
+	<br><br>
+	<p th:text="'Nome Tecnico: ' + ${rapporto.tecnico.nome}" />
+	<p th:text="'Cognome Tecnico: ' + ${rapporto.tecnico.cognome}" /> -->
+</body>
+</html>
