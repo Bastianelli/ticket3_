@@ -34,13 +34,14 @@ public class RapportoController {
 	//TODO SPOSTARE RESPONSABILITA SU RAPPORTOSERVICE (ADDTECNICO, ADDCLIENTE)
 	@PostMapping("/rapporto/add")
 	public String aggiungiRapporto(@RequestParam(name="denominazione") String denominazione, 
-			  @RequestParam(name="cognome") String cognome, Model model) {
+			@RequestParam(name="cognome") String cognome, @RequestParam(name="note") String note, Model model) {
 		Rapporto rapporto = new Rapporto();
 		Tecnico tecnico = tecnicoService.findByCognome(cognome);
 		Cliente cliente = clienteService.findByDenominazione(denominazione);
 		if (tecnico != null && cliente != null) {
 			rapporto.setCliente(cliente);
 			rapporto.setTecnico(tecnico);
+			rapporto.setNote(note);
 			rapportoRepository.save(rapporto);
 			model.addAttribute("rapporto", rapporto);
 			return "rapportoInserito";
