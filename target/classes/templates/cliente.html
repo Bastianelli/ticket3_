@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<form action="/cliente/add" method="POST">
+		<p>
+			<font color="red"></font>
+		</p>
+		<table>
+			<tr>
+				<td><label for="denominazione">Denominazione</label></td>
+				<td><input id="denominazione" name="denominazione" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="indirizzo">Indirizzo</label></td>
+				<td><input id="indirizzo" name="indirizzo" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="localita">Località</label></td>
+				<td><input id="localita" name="localita" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="cap">CAP</label></td>
+				<td><input id="cap" name="cap" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="citta">Città</label></td>
+				<td><input id="citta" name="citta" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="partitaIva">Partita Iva</label></td>
+				<td><input id="partitaIva" name="partitaIva" type="text" /></td>
+			</tr>
+		</table>
+		<input type="submit" />
+		<input type="submit" value = "cerca" formaction = "/cliente/find" formmethod = "GET"/>
+	</form>
+	
+	
+</body>
+</html>
