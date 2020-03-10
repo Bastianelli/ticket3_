@@ -1,9 +1,13 @@
 package it.wish.ticket3.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -18,6 +22,8 @@ public class Rapporto {
 	@OneToOne
 	private Tecnico tecnico;
 	private String note;
+	@OneToMany
+	private List<Componente> componenti = new ArrayList<>();
 
 	
 	public Rapporto() {}
@@ -54,10 +60,20 @@ public class Rapporto {
 		this.note = note;
 	}
 
+	public List<Componente> getComponenti() {
+		return componenti;
+	}
+
+	public void setComponenti(ArrayList<Componente> componenti) {
+		this.componenti = componenti;
+	}
+
 	@Override
 	public String toString() {
-		return "RapportoIntervento [id=" + id + ", cliente=" + cliente + ", tecnico=" + tecnico + "]";
+		return "Rapporto [id=" + id + ", cliente=" + cliente + ", tecnico=" + tecnico + ", note=" + note
+				+ ", componenti=" + componenti + "]";
 	}
+
 	
 	
 	

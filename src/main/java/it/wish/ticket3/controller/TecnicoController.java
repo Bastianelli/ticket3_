@@ -45,13 +45,7 @@ public class TecnicoController {
 	    return "tecnicoInserito";
 	  }
 	  
-	  @GetMapping("/tecnico/all")
-	  public String mostraTecnici(Model model) {
-		    // This returns a JSON or XML with the users		  
-		  model.addAttribute("tecnici", tecnicoService.findAll());
-		  System.out.println("STAMPA PROVENIENTE DAL CONTROLLER TECNICO ALL");
-		    return "mostraTecnici";
-	  }
+	  
 	  
 	  @GetMapping("/tecnico/find")
 	  public String trovaTecnico(@RequestParam(name="nome") String nome, 
@@ -67,11 +61,12 @@ public class TecnicoController {
 	    return "mostraTecnici";
 	  }
 	
-//	  @GetMapping("/tecnico/all")
-//	  public @ResponseBody Iterable<Tecnico> getAllUsers() {
-//		    // This returns a JSON or XML with the users
-//		    return tecnicoRepository.findAll();
-//	  }
+	  @GetMapping("/tecnico/all")
+	  public String mostraTuttiTecnici(Model model) {
+		    // This returns a JSON or XML with the users
+		  model.addAttribute("tecnici", tecnicoRepository.findAll());
+		    return "mostraTecnici";
+	  }
 	  
 	  
 //	  @GetMapping("/all")

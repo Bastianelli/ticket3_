@@ -8,7 +8,6 @@ import org.junit.Test;
 public class ComponenteTest {
 	private Componente componente1 = new Componente();
 	private Componente componente2 = new Componente();
-	private Componente componente3 = new Componente();
 	private Double uno = 5D, due = 15D;
 
 	@Before
