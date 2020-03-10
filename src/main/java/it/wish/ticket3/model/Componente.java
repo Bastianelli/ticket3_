@@ -7,6 +7,10 @@ public class Componente {
 	private Double costoTot;
 	
 	public Componente () {}
+	
+	public void calcolaCostoTotale() {
+		this.costoTot = this.costoUnitario * this.quantita;
+	}
 
 	public String getDescrizione() {
 		return descrizione;
