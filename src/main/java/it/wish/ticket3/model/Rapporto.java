@@ -27,6 +27,12 @@ public class Rapporto {
 
 	
 	public Rapporto() {}
+	
+	public void  addComponente(Componente componente) {
+		this.componenti.add(componente);
+	}
+	
+	
 
 	public Integer getId() {
 		return id;

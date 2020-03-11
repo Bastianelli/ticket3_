@@ -1,6 +1,9 @@
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\controller\TecnicoController.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\model\Componente.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\service\RapportoService.java
+C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\controller\ComponenteController.java
+C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\repository\ComponenteRepository.java
+C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\service\ComponenteService.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\repository\TecnicoRepository.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\service\TecnicoService.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\repository\ClienteRepository.java

@@ -16,6 +16,8 @@ public class RapportoService {
 		return this.rapportoRepository.findAll();
 	}
 	public Optional<Rapporto> findById(Integer id) {
+		
 		return rapportoRepository.findById(id);
+		
 	}
 }

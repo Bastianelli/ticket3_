@@ -7,4 +7,5 @@ import it.wish.ticket3.model.Rapporto;
 @Repository
 public interface RapportoRepository extends CrudRepository<Rapporto, Integer> {
 
+	
 }
