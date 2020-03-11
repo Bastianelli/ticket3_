@@ -57,7 +57,8 @@ public class Intervento {
 		return tempoIntToString(oraTot, minTot);
 	}
 	
-	//calcola il tempo trascorso tra un tempo iniziale ed uno finale
+	//dati come parametri due orari ( inizio, fine) restituisce il tempo 
+	//nel formato hh:mm trascorso tra i due
 	public String tempoTrascorso(String inizio, String fine) {
 		Integer oraInizio, oraFine, minInizio, minFine, oraTot, minTot;
 		oraInizio = oreStringToInt(inizio);
