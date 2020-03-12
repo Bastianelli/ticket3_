@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Wish: Intervento</title>
+</head>
+<body>
+	<form action="/intervento/add" method="POST">
+		<p>
+			<font color="red"></font>
+		</p>
+		<table>
+			<tr>
+				<td><label for="data">Data</label></td>
+				<td><input id="data" name="data" type="date" /></td>
+			</tr>
+			<tr>
+				<td><label for="inizio">Ora Inizio</label></td>
+				<td><input id="inizio" name="inizio" type="time" /></td>
+			</tr>
+			<tr>
+				<td><label for="fine">Ora Fine</label></td>
+				<td><input id="fine" name="fine" type="time" /></td>
+			</tr>
+			<tr>
+				<td><label for="viaggio">Tempo Viaggio</label></td>
+				<td><input id="viaggio" name="viaggio" type="time" /></td>
+			</tr>
+			<tr>
+				<td><label for="descrizioneIntervento">Descrizione Intervento</label></td>
+				<td><input id="descrizioneIntervento" name="descrizioneIntervento" type="text" /></td>
+			</tr>
+		</table>
+		<input type="submit" value="aggiungi"/>
+		<input type="submit" value = "cerca" formaction = "/rapporto/find" formmethod = "GET"/>
+	</form>
+	
+	<p>Torna alla home <a href="/index.html">qui</a></p>
+</body>
+</html>

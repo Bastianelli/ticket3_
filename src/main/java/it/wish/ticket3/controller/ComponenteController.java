@@ -44,6 +44,7 @@ public class ComponenteController {
 	public String aggiungiComponente(@RequestParam(name="descrizione") String descrizione, 
 			@RequestParam(name="costoUnitario") String costoUnitario,
 			@RequestParam(name="quantita") String quantita, Model model) {
+		
 		Componente componente = new Componente();
 		List<Componente> componenti = new ArrayList<>();
 		componente.setDescrizione(descrizione);

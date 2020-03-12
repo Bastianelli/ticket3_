@@ -22,6 +22,8 @@ public class Intervento {
 	private String viaggio;
 	@Column(name="tempo_totale")
 	private String tempoTotale;
+//	@Column(name = "costo_intervento")
+//	private Double costoIntervento;
 	@Column(name="descrizione_intervento")
 	private String descrizioneIntervento;
 
@@ -154,11 +156,34 @@ public class Intervento {
 		this.descrizioneIntervento = descrizioneIntervento;
 	}
 
+
+	public String getTempoTotale() {
+		return tempoTotale;
+	}
+
+
+	public void setTempoTotale(String tempoTotale) {
+		this.tempoTotale = tempoTotale;
+	}
+
+
+//	public Double getCostoIntervento() {
+//		return costoIntervento;
+//	}
+//
+//
+//	public void setCostoIntervento(Double costoIntervento) {
+//		this.costoIntervento = costoIntervento;
+//	}
+
+
 	@Override
 	public String toString() {
 		return "Intervento [id=" + id + ", data=" + data + ", inizio=" + inizio + ", fine=" + fine + ", viaggio="
-				+ viaggio + ", tempoTot=" + tempoTotale + ", descrizioneIntervento=" + descrizioneIntervento + "]";
+				+ viaggio + ", tempoTotale=" + tempoTotale + ", descrizioneIntervento=" + descrizioneIntervento + "]";
 	}
+
+	
 
 
 
