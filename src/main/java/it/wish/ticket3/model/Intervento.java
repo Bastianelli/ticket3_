@@ -30,7 +30,7 @@ public class Intervento {
 	
 	//setta tempo totale con la somma del tempo di lavoro con il tempo di viaggio
 	public void setTempoTotale() {
-		this.tempoTotale = sommaTempi(tempoTrascorso(this.inizio, this.fine), this.viaggio); 
+		this.tempoTotale = sommaTempi(this.tempoTrascorso(), this.viaggio); 
 	}
 
 	//somma due tempi
@@ -39,6 +39,8 @@ public class Intervento {
 			return sommaTempi(tempo1, "00:00");
 		} else if(tempo1 == null && tempo2 != null){
 			return sommaTempi("00:00", tempo2);
+		}else if (tempo1 == null && tempo2 == null) {
+			return null;
 		}
 		Integer ora1, ora2, min1, min2, oraTot, minTot;
 		ora1 = oreStringToInt(tempo1);
@@ -59,18 +61,18 @@ public class Intervento {
 	
 	//dati come parametri due orari ( inizio, fine) restituisce il tempo 
 	//nel formato hh:mm trascorso tra i due
-	public String tempoTrascorso(String inizio, String fine) {
+	public String tempoTrascorso() {
 		Integer oraInizio, oraFine, minInizio, minFine, oraTot, minTot;
-		oraInizio = oreStringToInt(inizio);
-		oraFine = oreStringToInt(fine);
-		minInizio = minutiStringToInt(inizio);
-		minFine = minutiStringToInt(fine);
+		oraInizio = oreStringToInt(this.inizio);
+		oraFine = oreStringToInt(this.fine);
+		minInizio = minutiStringToInt(this.inizio);
+		minFine = minutiStringToInt(this.fine);
 		
 		if (minInizio == minFine) {
-			oraTot = (oraFine - oraInizio)+1;
+			oraTot = oraFine - oraInizio;
 			minTot = 0;
 		} else if(minInizio > minFine){
-			oraTot = oraFine - oraInizio;
+			oraTot = (oraFine - oraInizio) - 1;
 			minTot = (60 - minInizio) + minFine;
 		}else {
 			oraTot = oraFine - oraInizio;
