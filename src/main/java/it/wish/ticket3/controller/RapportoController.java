@@ -1,5 +1,8 @@
 package it.wish.ticket3.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,7 +31,13 @@ public class RapportoController {
 	private String errore = "";
 	
 	@RequestMapping("/rapporto")
-	public String mostraFormRapporto() {
+	public String mostraFormRapporto(Model model) {
+		List<Cliente> clienti = new ArrayList<>();
+		clienti = (List<Cliente>) clienteService.findAll();
+		List<Tecnico> tecnici = new ArrayList<>();
+		tecnici = (List<Tecnico>) tecnicoService.findAll();
+		model.addAttribute("clienti", clienti);
+		model.addAttribute("tecnici", tecnici);
 		return "rapporto";
 	}
 	
