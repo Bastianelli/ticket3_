@@ -27,14 +27,16 @@ public class InterventoController {
 			@RequestParam(name = "inizio") String inizio,
 			@RequestParam(name = "fine") String fine,
 			@RequestParam(name = "viaggio") String viaggio,
+			@RequestParam(name = "descrizioneIntervento") String descrizioneIntervento,
 			 Model model) {
 		Intervento intervento = new Intervento();
 		intervento.setData(data);
 		intervento.setInizio(inizio);
 		intervento.setFine(fine);
 		intervento.setViaggio(viaggio);
-		//intervento.setDescrizioneIntervento(descrizioneIntervento);
+		intervento.setDescrizioneIntervento(descrizioneIntervento);
 		intervento.setTempoTotale();
+		interventoRepository.save(intervento);
 		System.out.println(intervento.toString());
 		return"intervento";
 	}

@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table( name = "rapporti_interventi")
+@Table( name = "rapporti")
 public class Rapporto {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
