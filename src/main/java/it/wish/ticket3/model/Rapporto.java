@@ -24,6 +24,8 @@ public class Rapporto {
 	private String note;
 	@OneToMany
 	private List<Componente> componenti = new ArrayList<>();
+	@OneToOne
+	private Intervento intervento;
 
 	
 	public Rapporto() {}
@@ -74,13 +76,24 @@ public class Rapporto {
 		this.componenti = componenti;
 	}
 
+	public Intervento getIntervento() {
+		return intervento;
+	}
+
+	public void setIntervento(Intervento intervento) {
+		this.intervento = intervento;
+	}
+
+	public void setComponenti(List<Componente> componenti) {
+		this.componenti = componenti;
+	}
+
 	@Override
 	public String toString() {
 		return "Rapporto [id=" + id + ", cliente=" + cliente + ", tecnico=" + tecnico + ", note=" + note
-				+ ", componenti=" + componenti + "]";
+				+ ", componenti=" + componenti + ", intervento=" + intervento + "]";
 	}
 
-	
-	
+
 	
 }

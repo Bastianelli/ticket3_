@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>inserisci intervento nel rapporto</title>
+</head>
+<body>
+<h1>Nuovo Rapporto inserito</h1>
+	<p th:text="'Id Rapporto ' + ${rapporto.id}" />
+	<p th:text="'Cliente: ' + ${rapporto.cliente.denominazione}" />
+	<p th:text="'Tecnico: ' + ${rapporto.tecnico.cognome}" />
+	<p th:text="'Note: ' + ${rapporto.note}" />
+	
+	<form action="/intervento/addToRapporto" method="POST">
+		<p>
+			<font color="red"></font>
+		</p>
+		<table>
+			<tr>
+				<td><label for="data">Data</label></td>
+				<td><input id="data" name="data" type="date" /></td>
+			</tr>
+			<tr>
+				<td><label for="inizio">Ora Inizio</label></td>
+				<td><input id="inizio" name="inizio" type="time" /></td>
+			</tr>
+			<tr>
+				<td><label for="fine">Ora Fine</label></td>
+				<td><input id="fine" name="fine" type="time" /></td>
+			</tr>
+			<tr>
+				<td><label for="viaggio">Tempo Viaggio</label></td>
+				<td><input id="viaggio" name="viaggio" type="time" /></td>
+			</tr>
+			<tr>
+				<td><label for="descrizioneIntervento">Descrizione Intervento</label></td>
+				<td><input id="descrizioneIntervento" name="descrizioneIntervento" type="text" /></td>
+			</tr>
+		</table>
+		 <input type="hidden" id="idRapporto" name="idRapporto" th:value="${rapporto.id}">
+		<input type="submit" value="aggiungi al rapporto"/>
+	</form>
+	
+</body>
+</html>

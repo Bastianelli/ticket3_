@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +27,8 @@ public class Intervento {
 //	private Double costoIntervento;
 	@Column(name="descrizione_intervento")
 	private String descrizioneIntervento;
+	@OneToOne
+	private Rapporto rapporto;
 
 	public Intervento() {}
 
@@ -176,15 +179,23 @@ public class Intervento {
 //		this.costoIntervento = costoIntervento;
 //	}
 
+	
+	public Rapporto getRapporto() {
+		return rapporto;
+	}
 
+
+	public void setRapporto(Rapporto rapporto) {
+		this.rapporto = rapporto;
+	}
+
+	//escluso rapporto per evitare loop
 	@Override
 	public String toString() {
 		return "Intervento [id=" + id + ", data=" + data + ", inizio=" + inizio + ", fine=" + fine + ", viaggio="
 				+ viaggio + ", tempoTotale=" + tempoTotale + ", descrizioneIntervento=" + descrizioneIntervento + "]";
 	}
 
+
 	
-
-
-
 }
