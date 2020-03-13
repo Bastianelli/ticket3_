@@ -2,61 +2,73 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Rapporto Inserito</title>
+<title>Rapporto Inserito </title>
 </head>
 <body>
-	<h1>Nuovo Rapporto inserito</h1>
-	<p th:text="'Id Rapporto ' + ${rapporto.id}" />
-	<p th:text="'Cliente: ' + ${rapporto.cliente.denominazione}" />
-	<p th:text="'Tecnico: ' + ${rapporto.tecnico.cognome}" />
+	<h1>Rapporto Inserito Correttamente</h1>
+	<h2>Rapporto</h2>
+	<p th:text="'Id Rapporto: ' + ${rapporto.id}" />
 	<p th:text="'Note: ' + ${rapporto.note}" />
-<!-- 	<p th:text="'Indirizzo: ' + ${rapporto.cliente.indirizzo}" />
+	<br>
+	<h2>Cliente</h2>
+	<p th:text="'Cliente: ' + ${rapporto.cliente.denominazione}" />
+	<p th:text="'Indirizzo: ' + ${rapporto.cliente.indirizzo}" />
 	<p th:text="'Localita: ' + ${rapporto.cliente.localita}" />
 	<p th:text="'CAP: ' + ${rapporto.cliente.cap}" />
 	<p th:text="'Citta: ' + ${rapporto.cliente.citta}" />
 	<p th:text="'Partita IVA: ' + ${rapporto.cliente.partitaIva}" />
-	<br><br>
-	<p th:text="'Nome Tecnico: ' + ${rapporto.tecnico.nome}" />
-	<p th:text="'Cognome Tecnico: ' + ${rapporto.tecnico.cognome}" /> -->
-	
-	<form action="/componente/addToRapporto" method="POST">
-		<p>
-			<font color="red"></font>
-		</p>
-		<table>
-			<tr>
-				<td><label for="descrizione">Descrizione</label></td>
-				<td><input id="descrizione" name="descrizione" type="text" /></td>
-			</tr>
-			<tr>
-				<td><label for="costoUnitario">Costo Unitario</label></td>
-				<td><input id="costoUnitario" name="costoUnitario" type="text" /></td>
-			</tr>
-			<tr>
-				<td><label for="quantita">Quantita'</label></td>
-				<td><input id="quantita" name="quantita" type="text" /></td>
-			</tr>
-		</table>
-		 <input type="hidden" id="idRapporto" name="idRapporto" th:value="${rapporto.id}">
-		<input type="submit" value="aggiungi al rapporto"/>
-		<input type="submit" value = "aggiungi intervento" formaction = "/interventoToRapporto" formmethod = "GET"/>
-	</form>
-	
-	
+	<br>
+	<h2>Tecnico</h2>
+	<p th:text="'Nome: ' + ${rapporto.tecnico.nome}" />
+	<p th:text="'Cognome: ' + ${rapporto.tecnico.cognome}" />
+	<br>
+	<h2>Intervento</h2>
 	<table>
 		<thead>
 			
 				<tr>
-					<th>Descrizione</th>
-					<th>Costo Unitario</th>
-					<th>Quantita'</th>
-					<th>Costo Totale</th>
+					<th>Data:</th>
+					<th>Ora di inizio intervento:</th>
+					<th>Ora di fine intervento:</th>
+					<th>Dturata viaggio:</th>
+					<th>Tempo totale:</th>
+					<th>Descrizione Intervento:</th>
+				</tr>
+			
+		</thead>
+		<tbody>
+			<tr th:if="${rapporto.intervento == null}">
+				<td colspan="2">Nessun Intervento trovato</td>
+			</tr>
+			<!-- <tr th:each="componente : ${rapporto.componenti}"> -->
+				<td><span th:text="${rapporto.intervento.data}"> Data: </span></td>
+				<td><span th:text="${rapporto.intervento.inizio}"> Ora di inizio intervento: </span></td>
+				<td><span th:text="${rapporto.intervento.fine}"> Ora di fine intervento: </span></td>
+				<td><span th:text="${rapporto.intervento.viaggio}"> Dturata viaggio: </span></td>
+				<td><span th:text="${rapporto.intervento.tempoTotale}"> Tempo totale: </span></td>
+				<td><span th:text="${rapporto.intervento.descrizioneIntervento}"> Descrizione Intervento: </span></td>
+			</tr>
+			
+		</tbody>
+	</table>
+
+	
+	<br>
+	<h2>Componenti</h2>
+	<table>
+		<thead>
+			
+				<tr>
+					<th>Descrizione:</th>
+					<th>Costo Unitario:</th>
+					<th>Quantita':</th>
+					<th>Costo Totale:</th>
 				</tr>
 			
 		</thead>
 		<tbody>
 			<tr th:if="${rapporto.componenti != null && rapporto.componenti.empty}">
-				<td colspan="2">Nessun Componente ancora inserito</td>
+				<td colspan="2">Nessun Componente trovato</td>
 			</tr>
 			<tr th:each="componente : ${rapporto.componenti}">
 				<td><span th:text="${componente.descrizione}"> Descrizione: </span></td>
@@ -68,28 +80,7 @@
 		</tbody>
 	</table>
 	<br><br>
-	<table>
-		<thead>
-			<tr>
-				<th>Descrizione</th>
-				<th>Costo Unitario</th>
-				<th>Quantita'</th>
-				<th>Costo Totale</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr th:if="${componeti != null && componenti.empty}">
-				<td colspan="2">Nessun Componente Trovato</td>
-			</tr>
-			<tr th:each="componente1 : ${componenti}">
-				<td><span th:text="${componente1.descrizione}"> Descrizione: </span></td>
-				<td><span th:text="${componente1.costoUnitario}"> Costo Unitario: </span></td>
-				<td><span th:text="${componente1.quantita}"> Quantita': </span></td>
-				<td><span th:text="${componente1.costoTot}"> Costo Totale: </span></td>
-			</tr>
-			
-		</tbody>
-	</table>
+	
 	<p>Torna alla home <a href="/index.html">qui</a></p>
 </body>
 </html>

@@ -80,6 +80,6 @@ public class InterventoController {
 		rapportoRepository.save(rapporto);
 		model.addAttribute("rapporto", rapporto);
 		System.out.println(intervento.toString());
-		return "rapportoInserito";
+		return "componenteToRapporto";
 	}
 }

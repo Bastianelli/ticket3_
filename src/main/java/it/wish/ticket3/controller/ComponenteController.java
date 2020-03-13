@@ -86,7 +86,7 @@ public class ComponenteController {
 		System.out.println(rapporto.toString());
 		System.out.println("STAMPA PROVENIENTE DAL CONTROLLER COMPONENTE ADD TO RAPPORTO");
 		
-		return "rapportoInserito";
+		return "componenteToRapporto";
 	}
 	
 	@GetMapping("/componente/all")

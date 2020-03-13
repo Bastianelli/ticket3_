@@ -31,6 +31,15 @@ public class RapportoController {
 	public String mostraFormRapporto() {
 		return "rapporto";
 	}
+	
+	@RequestMapping("/rapportoInserito")
+	public String mostraRapportoInserito(@RequestParam(name="idRapporto") String idRapporto, Model model) {
+		Rapporto rapporto= new Rapporto();
+		rapporto = rapportoService.findById(Integer.parseInt(idRapporto)).get();
+		model.addAttribute("rapporto", rapporto );
+		return "rapportoInserito";
+	}
+	
 	//TODO SPOSTARE RESPONSABILITA SU RAPPORTOSERVICE (ADDTECNICO, ADDCLIENTE)
 	@PostMapping("/rapporto/add")
 	public String aggiungiRapporto(@RequestParam(name="denominazione") String denominazione, 
@@ -44,7 +53,7 @@ public class RapportoController {
 			rapporto.setNote(note);
 			rapportoRepository.save(rapporto);
 			model.addAttribute("rapporto", rapporto);
-			return "rapportoInserito";
+			return "interventoToRapporto";
 		}else {
 			errore = "AGGIUNGI RAPPORTO";
 			model.addAttribute("messaggioErrore", errore);

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Aggiungi Componenti al rapporto</title>
+</head>
+<body>
+	<h1>Nuovo Rapporto inserito</h1>
+	<p th:text="'Id Rapporto ' + ${rapporto.id}" />
+	<p th:text="'Cliente: ' + ${rapporto.cliente.denominazione}" />
+	<p th:text="'Tecnico: ' + ${rapporto.tecnico.cognome}" />
+	<p th:text="'Note: ' + ${rapporto.note}" />
+<!-- 	<p th:text="'Indirizzo: ' + ${rapporto.cliente.indirizzo}" />
+	<p th:text="'Localita: ' + ${rapporto.cliente.localita}" />
+	<p th:text="'CAP: ' + ${rapporto.cliente.cap}" />
+	<p th:text="'Citta: ' + ${rapporto.cliente.citta}" />
+	<p th:text="'Partita IVA: ' + ${rapporto.cliente.partitaIva}" />
+	<br><br>
+	<p th:text="'Nome Tecnico: ' + ${rapporto.tecnico.nome}" />
+	<p th:text="'Cognome Tecnico: ' + ${rapporto.tecnico.cognome}" /> -->
+	
+	<form action="/componente/addToRapporto" method="POST">
+		<p>
+			<font color="red"></font>
+		</p>
+		<table>
+			<tr>
+				<td><label for="descrizione">Descrizione</label></td>
+				<td><input id="descrizione" name="descrizione" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="costoUnitario">Costo Unitario</label></td>
+				<td><input id="costoUnitario" name="costoUnitario" type="text" /></td>
+			</tr>
+			<tr>
+				<td><label for="quantita">Quantita'</label></td>
+				<td><input id="quantita" name="quantita" type="text" /></td>
+			</tr>
+		</table>
+		 <input type="hidden" id="idRapporto" name="idRapporto" th:value="${rapporto.id}">
+		<input type="submit" value="aggiungi al rapporto"/>
+		<input type="submit" value = "completa inserimento" formaction = "/rapportoInserito" formmethod = "GET"/>
+	</form>
+	
+	
+	<table>
+		<thead>
+			
+				<tr>
+					<th>Descrizione</th>
+					<th>Costo Unitario</th>
+					<th>Quantita'</th>
+					<th>Costo Totale</th>
+				</tr>
+			
+		</thead>
+		<tbody>
+			<tr th:if="${rapporto.componenti != null && rapporto.componenti.empty}">
+				<td colspan="2">Nessun Componente ancora inserito</td>
+			</tr>
+			<tr th:each="componente : ${rapporto.componenti}">
+				<td><span th:text="${componente.descrizione}"> Descrizione: </span></td>
+				<td><span th:text="${componente.costoUnitario}"> Costo Unitario: </span></td>
+				<td><span th:text="${componente.quantita}"> Quantita': </span></td>
+				<td><span th:text="${componente.costoTot}"> Costo Totale: </span></td>
+			</tr>
+			
+		</tbody>
+	</table>
+	<br><br>
+	<!-- <p>Torna alla home <a href="/index.html">qui</a></p> -->
+</body>
+</html>
