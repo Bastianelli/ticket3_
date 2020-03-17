@@ -44,16 +44,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		web
 		.ignoring()
 		.antMatchers("/index.html")
-		.antMatchers("/tecnico/all")
-		.antMatchers("/");
+		.antMatchers("/error")
+		.antMatchers("/**");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
-		.antMatchers("/admin**.html").hasAuthority("ROLE_ADMIN")
+        
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()
@@ -62,6 +61,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.logout()
 		.permitAll();
+		
+
+//		.antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+//		.antMatchers("/admin**.html").hasAuthority("ROLE_ADMIN")
+//        .antMatchers("/user/**").hasAuthority("ROLE_USER")
+//        .antMatchers("/user**.html").hasAuthority("ROLE_USER")
+		
+		//http.exceptionHandling().accessDeniedPage("/errore");
 	}
 	@Bean
 	public PasswordEncoder gePasswordEncoder() {

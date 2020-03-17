@@ -61,7 +61,7 @@ public class ComponenteController {
 		return "componente";
 	}
 	
-	@PostMapping("/componente/addToRapporto")
+	@PostMapping("/user/componente/addToRapporto")
 	public String aggiungiComponenteToRapporto(@RequestParam(name="descrizione") String descrizione, 
 			@RequestParam(name="costoUnitario") String costoUnitario,
 			@RequestParam(name="quantita") String quantita,

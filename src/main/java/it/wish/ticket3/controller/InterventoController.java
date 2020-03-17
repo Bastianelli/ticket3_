@@ -24,12 +24,12 @@ public class InterventoController {
 	@Autowired
 	private RapportoRepository rapportoRepository;
 	
-	@RequestMapping("/intervento")
+	@RequestMapping("/user/intervento")
 	public String mostraIntervento() {
 		return "intervento";
 	}
 	
-	@RequestMapping("/interventoToRapporto")
+	@RequestMapping("/user/interventoToRapporto")
 	public String mostraInterventoToRapporto(@RequestParam(name="idRapporto") String idRapporto, Model model) {
 		Rapporto rapporto= new Rapporto();
 		rapporto = rapportoService.findById(Integer.parseInt(idRapporto)).get();
@@ -56,7 +56,7 @@ public class InterventoController {
 		return"intervento";
 	}
 	
-	@RequestMapping("/intervento/addToRapporto")
+	@RequestMapping("/user/intervento/addToRapporto")
 	public String aggiungiInterventoToRapporto(@RequestParam(name = "data") String data, 
 			@RequestParam(name = "inizio") String inizio,
 			@RequestParam(name = "fine") String fine,

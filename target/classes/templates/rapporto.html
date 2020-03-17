@@ -1,11 +1,12 @@
 <!DOCTYPE HTML>
+<!-- rapporto.html -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Wish: Rapporto</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="/rapporto/add" method="POST">
+	<form action="/user/rapporto/add" method="POST">
 		<p>
 			<font color="red"></font>
 		</p>
@@ -31,11 +32,11 @@
 			</tr>
 		</table>
 		<input type="submit" value="aggiungi" /> <input type="submit"
-			value="cerca" formaction="/rapporto/find" formmethod="GET" />
+			value="cerca" formaction="/rapporto/find" formmethod="POST" />
 	</form>
 
 	<p>
-		Torna alla home <a href="/index.html">qui</a>
+		Torna alla home <a href="/">qui</a>
 	</p>
 
 </body>
