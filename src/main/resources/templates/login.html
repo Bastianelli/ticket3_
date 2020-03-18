@@ -38,7 +38,9 @@
       <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
   </div>
-  
+    <form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out" />
+  </form>
 	<p>Torna alla home <a href="/">qui</a></p>
 </body>
 </html>

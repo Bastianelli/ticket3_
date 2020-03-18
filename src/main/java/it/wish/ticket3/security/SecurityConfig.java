@@ -34,37 +34,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//predisposto per schemapersonalizzato
 		auth.jdbcAuthentication()
 		.dataSource(dataSource).passwordEncoder(new BCryptPasswordEncoder())
-		.usersByUsernameQuery("SELECT username,password, enabled "
-				+ "from users "
-				+ "where username=?")
-		.authoritiesByUsernameQuery("SELECT username, authority "
-				+ "from authorities "
-				+ "where username=?");
+		.usersByUsernameQuery("SELECT username,password, enabled FROM users where username=?")
+		.authoritiesByUsernameQuery("SELECT username, authority FROM authorities where username=?");
 	}
 
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web
 		.ignoring()
-		.antMatchers("/index.html")
-		.antMatchers("/error")
-		.antMatchers("/");
+		.antMatchers("login")
+		.antMatchers("/login.html");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 		http
-		.authorizeRequests()
-		
-		.anyRequest().authenticated()
+			.authorizeRequests()
+			.antMatchers("/admin/**").hasRole("ADMIN")
+			.antMatchers("/admin**.html").hasRole("ADMIN")
+			.antMatchers("/user/**").hasRole("USER")
+			.antMatchers("**user**.html").hasRole("USER")
+			.anyRequest().authenticated()
 		.and()
-		.formLogin()
-		.loginPage("/login")
-		.successHandler(myAuthenticationSuccessHandler())
-		.permitAll()
+			.formLogin()
+			.loginPage("/login")
+			.successHandler(myAuthenticationSuccessHandler())
+			.permitAll()
 		.and()
-		.logout()
-		.permitAll();
+			.logout()
+			.permitAll();
 
 
 		//		.antMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
@@ -74,10 +73,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		//http.exceptionHandling().accessDeniedPage("/errore");
 	}
-	//	@Bean
-	//	public PasswordEncoder gePasswordEncoder() {
-	//		return NoOpPasswordEncoder.getInstance();
-	//	}
+		@Bean
+		public PasswordEncoder gePasswordEncoder() {
+			return NoOpPasswordEncoder.getInstance();
+		}
 	@Bean("authenticationManager")
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {

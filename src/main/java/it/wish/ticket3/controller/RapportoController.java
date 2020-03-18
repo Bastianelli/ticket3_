@@ -29,6 +29,8 @@ public class RapportoController {
 	@Autowired
 	private ClienteService clienteService;
 	
+	
+	
 	@RequestMapping("/user/rapporto")
 	public String mostraFormRapporto(Model model) {
 		List<Cliente> clienti = new ArrayList<>();
