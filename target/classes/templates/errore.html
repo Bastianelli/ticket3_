@@ -7,10 +7,11 @@
 <title>Security with Spring Boot</title>
 </head>
 <body>
-  <h1>Access is Denied!</h1>
+  <h1>Accesso non Autorizzato!</h1>
+  <p>non sei autorizzato ad accedere alla pagina richiesta!</p>
   <a style="color: blue" th:href="@{/}">Home</a>
   <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out" />
+    <input type="submit" value="LogOut" />
   </form>
 </body>
 </html>

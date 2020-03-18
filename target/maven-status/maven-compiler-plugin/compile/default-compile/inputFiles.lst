@@ -13,10 +13,11 @@ C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\repositor
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\repository\RapportoRepository.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\controller\RapportoController.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\controller\ClienteController.java
+C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\security\MySimpleUrlAuthenticationSuccessHandler.java
+C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\controller\LoginController.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\model\Intervento.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\model\Rapporto.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\model\Cliente.java
-C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\MvcConfig.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\Ticket3Application.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\service\ClienteService.java
 C:\Users\miche\eclipse-workspace\ticket3\src\main\java\it\wish\ticket3\model\Tecnico.java

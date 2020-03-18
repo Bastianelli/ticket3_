@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/admin/**").hasRole("ADMIN")
 			.antMatchers("/admin**.html").hasRole("ADMIN")
 			.antMatchers("/user/**").hasRole("USER")
-			.antMatchers("**user**.html").hasRole("USER")
+			.antMatchers("/user**.html").hasRole("USER")
 			.anyRequest().authenticated()
 		.and()
 			.formLogin()
@@ -71,7 +71,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		//        .antMatchers("/user/**").hasAuthority("ROLE_USER")
 		//        .antMatchers("/user**.html").hasAuthority("ROLE_USER")
 
-		//http.exceptionHandling().accessDeniedPage("/errore");
+		http.exceptionHandling().accessDeniedPage("/errore");
 	}
 		@Bean
 		public PasswordEncoder gePasswordEncoder() {

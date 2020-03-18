@@ -31,7 +31,7 @@ public class RapportoController {
 	
 	
 	
-	@RequestMapping("/user/rapporto")
+	@RequestMapping("/admin/rapporto")
 	public String mostraFormRapporto(Model model) {
 		List<Cliente> clienti = new ArrayList<>();
 		clienti = (List<Cliente>) clienteService.findAll();
@@ -42,7 +42,7 @@ public class RapportoController {
 		return "rapporto";
 	}
 	
-	@RequestMapping("/user/rapportoInserito")
+	@RequestMapping("/admin/rapportoInserito")
 	public String mostraRapportoInserito(@RequestParam(name="idRapporto") String idRapporto, Model model) {
 		Rapporto rapporto= new Rapporto();
 		rapporto = rapportoService.findById(Integer.parseInt(idRapporto)).get();
@@ -51,7 +51,7 @@ public class RapportoController {
 	}
 	
 	//TODO SPOSTARE RESPONSABILITA SU RAPPORTOSERVICE (ADDTECNICO, ADDCLIENTE)
-	@PostMapping("/user/rapporto/add")
+	@PostMapping("/admin/rapporto/add")
 	public String aggiungiRapporto(@RequestParam(name="denominazione") String denominazione, 
 			@RequestParam(name="cognome") String cognome, @RequestParam(name="note") String note, Model model) {
 		Rapporto rapporto = new Rapporto();

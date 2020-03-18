@@ -4,7 +4,7 @@
   xmlns:th="http://www.thymeleaf.org"
   xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-  <title>Welcome Security with Spring Boot!</title>
+  <title>Ticket Wish!</title>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet"
@@ -15,12 +15,13 @@
     src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body class="container" style="margin:50px">
+	<h1>Benvenuto nel portale di gestione dei Ticket di Wish!</h1>
+	<h3>Effettuare il login per continuare</h3>
   <div class="row col-sm-6" 
         style="border: 1px ridge #003312; padding:20px; float: none; margin: 0 auto;">
-    <h5 class="text-center" style="font-size: 25px">Sign In</h5>
+    <h5 class="text-center" style="font-size: 25px">LogIn</h5>
     <div th:if="${param.error}">
-      <p style="color: red">UserName or PassWord is wrong. Please
-        check again!</p>
+      <p style="color: red">UserName or PassWord sbagliati. Riprova!</p>
   
     </div>
     <div th:if="${param.logout}">
@@ -39,7 +40,7 @@
     </form>
   </div>
     <form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out" />
+    <input type="submit" value="LogOut" />
   </form>
 	<p>Torna alla home <a href="/">qui</a></p>
 </body>

@@ -24,7 +24,7 @@ public class InterventoController {
 	@Autowired
 	private RapportoRepository rapportoRepository;
 	
-	@RequestMapping("/user/intervento")
+	@RequestMapping("/intervento")
 	public String mostraIntervento() {
 		return "intervento";
 	}
@@ -56,7 +56,7 @@ public class InterventoController {
 		return"intervento";
 	}
 	
-	@RequestMapping("/user/intervento/addToRapporto")
+	@RequestMapping("/admin/intervento/addToRapporto")
 	public String aggiungiInterventoToRapporto(@RequestParam(name = "data") String data, 
 			@RequestParam(name = "inizio") String inizio,
 			@RequestParam(name = "fine") String fine,

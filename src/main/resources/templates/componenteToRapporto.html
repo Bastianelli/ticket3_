@@ -6,7 +6,7 @@
 <title>Aggiungi Componenti al rapporto</title>
 </head>
 <body>
-	<h1>Nuovo Rapporto inserito</h1>
+	<h1>Nuovo Rapporto </h1>
 	<p th:text="'Id Rapporto ' + ${rapporto.id}" />
 	<p th:text="'Cliente: ' + ${rapporto.cliente.denominazione}" />
 	<p th:text="'Tecnico: ' + ${rapporto.tecnico.cognome}" />
@@ -20,7 +20,7 @@
 	<p th:text="'Nome Tecnico: ' + ${rapporto.tecnico.nome}" />
 	<p th:text="'Cognome Tecnico: ' + ${rapporto.tecnico.cognome}" /> -->
 	
-	<form action="/user/componente/addToRapporto" method="POST">
+	<form action="/admin/componente/addToRapporto" method="POST">
 		<p>
 			<font color="red"></font>
 		</p>
@@ -40,7 +40,7 @@
 		</table>
 		 <input type="hidden" id="idRapporto" name="idRapporto" th:value="${rapporto.id}">
 		<input type="submit" value="aggiungi al rapporto"/>
-		<input type="submit" value = "completa inserimento" formaction = "/user/rapportoInserito" formmethod = "POST"/>
+		<input type="submit" value = "completa inserimento" formaction = "/admin/rapportoInserito" formmethod = "POST"/>
 	</form>
 	
 	
