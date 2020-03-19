@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<!-- adminIndex.html -->
+<html>
+<head>
+    <title>Wish Ticket3</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<p>Aggiungi un Rapporto <a href="/admin/rapporto">qui</a></p>
+    <p>Aggiungi un Tecnico <a href="/tecnico">qui</a></p>
+    <p>Aggiungi un Cliente <a href="/cliente">qui</a></p>
+    <p>//TODO Visualizza i Rapporti <a href="/rapporto/all">qui</a></p>
+    <p>Visualizza i Tecnici <a href="/tecnico/all">qui</a></p>
+    <p>//TODO Visualizza i Clienti <a href="/cliente/all">qui</a></p>
+    
+	<p>Torna alla home <a href="/">qui</a></p>
+	<form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+        
+     
+	<!-- <p>Aggiungi un Intervento <a href="/intervento">qui</a></p>
+    <p>Aggiungi un Componente <a href="/componente">qui</a></p> -->
+</body>
+</html>

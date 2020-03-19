@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- intervento.html -->
 <html>
 <head>
 <meta charset="ISO-8859-1">
@@ -34,7 +35,9 @@
 		<input type="submit" value="aggiungi"/>
 		<input type="submit" value = "cerca" formaction = "/rapporto/find" formmethod = "GET"/>
 	</form>
-	
-	<p>Torna alla home <a href="/index.html">qui</a></p>
+	<form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+        </form>
+	<p>Torna alla home <a href="/">qui</a></p>
 </body>
 </html>

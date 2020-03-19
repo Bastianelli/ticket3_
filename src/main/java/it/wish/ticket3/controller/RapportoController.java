@@ -28,9 +28,10 @@ public class RapportoController {
 	private TecnicoService tecnicoService;
 	@Autowired
 	private ClienteService clienteService;
-	private String errore = "";
 	
-	@RequestMapping("/rapporto")
+	
+	
+	@RequestMapping("/admin/rapporto")
 	public String mostraFormRapporto(Model model) {
 		List<Cliente> clienti = new ArrayList<>();
 		clienti = (List<Cliente>) clienteService.findAll();
@@ -41,7 +42,7 @@ public class RapportoController {
 		return "rapporto";
 	}
 	
-	@RequestMapping("/rapportoInserito")
+	@RequestMapping("/admin/rapportoInserito")
 	public String mostraRapportoInserito(@RequestParam(name="idRapporto") String idRapporto, Model model) {
 		Rapporto rapporto= new Rapporto();
 		rapporto = rapportoService.findById(Integer.parseInt(idRapporto)).get();
@@ -50,23 +51,20 @@ public class RapportoController {
 	}
 	
 	//TODO SPOSTARE RESPONSABILITA SU RAPPORTOSERVICE (ADDTECNICO, ADDCLIENTE)
-	@PostMapping("/rapporto/add")
+	@PostMapping("/admin/rapporto/add")
 	public String aggiungiRapporto(@RequestParam(name="denominazione") String denominazione, 
 			@RequestParam(name="cognome") String cognome, @RequestParam(name="note") String note, Model model) {
 		Rapporto rapporto = new Rapporto();
 		Tecnico tecnico = tecnicoService.findByCognome(cognome);
 		Cliente cliente = clienteService.findByDenominazione(denominazione);
-		if (tecnico != null && cliente != null) {
+		
 			rapporto.setCliente(cliente);
 			rapporto.setTecnico(tecnico);
 			rapporto.setNote(note);
 			rapportoRepository.save(rapporto);
 			model.addAttribute("rapporto", rapporto);
+			System.out.println("/user/rapporto/add");
 			return "interventoToRapporto";
-		}else {
-			errore = "AGGIUNGI RAPPORTO";
-			model.addAttribute("messaggioErrore", errore);
-			return "errore";
-		}
+		
 	}
 }
