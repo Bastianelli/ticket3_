@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,7 +43,7 @@ public class RapportoController {
 		return "rapporto";
 	}
 	
-	@RequestMapping("/admin/rapportoInserito")
+	@RequestMapping("/rapportoInserito")
 	public String mostraRapportoInserito(@RequestParam(name="idRapporto") String idRapporto, Model model) {
 		Rapporto rapporto= new Rapporto();
 		rapporto = rapportoService.findById(Integer.parseInt(idRapporto)).get();
@@ -61,10 +62,19 @@ public class RapportoController {
 			rapporto.setCliente(cliente);
 			rapporto.setTecnico(tecnico);
 			rapporto.setNote(note);
+			cliente.addRapporto(rapporto);
 			rapportoRepository.save(rapporto);
 			model.addAttribute("rapporto", rapporto);
 			System.out.println("/user/rapporto/add");
 			return "interventoToRapporto";
 		
 	}
+	
+	 @GetMapping("/rapporto/find")
+	  public String trovaRapportiCliente(@RequestParam(name="idCliente") String idCliente, Model model) {
+		  Cliente cliente = new Cliente();
+		  cliente = clienteService.findById(Integer.parseInt(idCliente)).get();
+		  model.addAttribute("rapporti", cliente.getRapporti());
+	    return "mostraRapporti";
+	  }
 }

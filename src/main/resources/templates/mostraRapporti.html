@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!-- mostraRapporti.html -->
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Rapporti</title>
+</head>
+<body>
+	<table>
+		<thead>
+			<tr>
+				<th>Rapporti</th>
+				
+			</tr>
+		</thead>
+		<tbody>
+		
+			<tr th:if="${rapporti.empty}">
+				<td colspan="2">Nessun Rapporto Trovato</td>
+			</tr>
+			<tr th:each="rapporto : ${rapporti}">
+				<td>
+					<form action="/rapportoInserito" method = "GET">
+						<input type="hidden" id="idRapporto" name="idRapporto" th:value="${rapporto.id}">
+						<input type="submit" th:value="${rapporto.intervento.data}"/>
+					</form>
+				</td>
+			</tr>
+			
+		</tbody>
+	</table>
+	<p>Torna alla home <a href="/">qui</a></p>
+</body>
+</html>

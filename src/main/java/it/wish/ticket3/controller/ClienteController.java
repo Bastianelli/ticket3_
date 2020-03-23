@@ -55,15 +55,17 @@ public class ClienteController {
 	  
 	  //TODO
 	  @GetMapping("/cliente/find")
-	  public String trovaTecnico(@RequestParam(name="denominazione") String denominazione, Model model) {
+	  public String trovaCliente(@RequestParam(name="denominazione") String denominazione, Model model) {
 		  Cliente cliente = new Cliente();
-		  List<Cliente> clienti= new ArrayList<Cliente>();
 		  cliente = clienteService.findByDenominazione(denominazione);
-		   if(cliente != null) {
-			   clienti.add(cliente);
-		   }
-		  model.addAttribute("clienti", clienti);
-		  System.out.println("STAMPA PROVENIENTE DAL CONTROLLER TECNICO FIND");
-	    return "mostraClienti";
+		  model.addAttribute("cliente", cliente);
+	    return "schedaCliente";
+	  }
+	  
+	  @GetMapping("/cliente/all")
+	  public String mostraTuttiClienti(Model model) {
+		    // This returns a JSON or XML with the users
+		  model.addAttribute("clienti", clienteRepository.findAll());
+		    return "mostraClienti";
 	  }
 }

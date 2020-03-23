@@ -5,11 +5,15 @@ package it.wish.ticket3.model;
 
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 /**
@@ -38,9 +42,15 @@ public class Cliente {
 	@NotNull
 	@Column(name="partita_iva")
 	private String partitaIva;
+	@OneToMany
+	private List<Rapporto> rapporti = new ArrayList<>();
 	
 	public Cliente() {}
 	
+	
+	public void addRapporto(Rapporto rapporto) {
+		this.rapporti.add(rapporto);
+	}
 	
 	//getter e setter
 	public String getDenominazione() {
@@ -88,11 +98,24 @@ public class Cliente {
 	}
 
 
+	public List<Rapporto> getRapporti() {
+		return rapporti;
+	}
+
+
+	public void setRapporti(List<Rapporto> rapporti) {
+		this.rapporti = rapporti;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Cliente [Id=" + Id + ", denominazione=" + denominazione + ", indirizzo=" + indirizzo + ", localita="
 				+ localita + ", cap=" + cap + ", citta=" + citta + ", partitaIva=" + partitaIva + "]";
 	}
+
+
+
 	
 	
 }

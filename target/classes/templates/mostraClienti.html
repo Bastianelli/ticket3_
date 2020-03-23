@@ -9,12 +9,8 @@
 	<table>
 		<thead>
 			<tr>
-				<th>denominazione</th>
-				<th>indirizzo</th>
-				<th>localita</th>
-				<th>CAP</th>
-				<th>Citta</th>
-				<th>partita IVA</th>
+				<th>Clienti</th>
+				
 			</tr>
 		</thead>
 		<tbody>
@@ -22,12 +18,12 @@
 				<td colspan="2">Nessun Cliente Trovato</td>
 			</tr>
 			<tr th:each="cliente : ${clienti}">
-				<td><span th:text="${cliente.denominazione}"> Nome: </span></td>
-				<td><span th:text="${cliente.indirizzo}"> Cognome: </span></td>
-				<td><span th:text="${cliente.localita}"> Nome: </span></td>
-				<td><span th:text="${cliente.cap}"> Cognome: </span></td>
-				<td><span th:text="${cliente.citta}"> Nome: </span></td>
-				<td><span th:text="${cliente.partitaIva}"> Cognome: </span></td>
+				<td>
+					<form action="/cliente/find" method = "GET">
+						<input type="hidden" id="denominazione" name="denominazione" th:value="${cliente.denominazione}">
+						<input type="submit" th:value="${cliente.denominazione}"/>
+					</form>
+				</td>
 			</tr>
 			
 		</tbody>
