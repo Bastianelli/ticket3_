@@ -12,7 +12,7 @@
 		</p>
 		<table>
 			<tr>
-				<td><label for="denominazione">Denominazione Cliente</label></td>
+				<td><label for="denominazione">Cliente</label></td>
 				<td><select id="denominazione" name="denominazione">
 					<option th:each="cliente : ${clienti}" th:value="${cliente.denominazione}" 
 							th:text="${cliente.denominazione}"></option>
@@ -31,7 +31,7 @@
 				<td><input id="note" name="note" type="text" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="aggiungi" /> <input type="submit"/>
+		<input type="submit" value="aggiungi" />
 	</form>
 
 	<p>

@@ -6,29 +6,103 @@
 <title>Rapporti</title>
 </head>
 <body>
+	<form action="/rapporto/find" method="POST">
+		<table>
+			<tr><!----------------------------------- inizio tendina Cliente -------------------------------------------->
+				<td><label for="idCliente">Cliente</label></td>
+				<td><select id="idCliente" name="idCliente">
+						<option th:if="${cliente.id == '0'}" value="0">tutti</option>
+						<option th:unless="${cliente.id == '0'}" th:value="${cliente.id}"
+							th:text="${cliente.denominazione}"></option>
+						<option th:each="cliente1 : ${clienti}" 
+									th:if="${cliente1.id != cliente.id}"
+										th:value="${cliente1.id}"
+										th:text="${cliente1.denominazione}"></option>
+				</select></td>
+			</tr>
+<!-- 			<tr>--------------------------------- inizio tendina Tecnico ------------------------------------------
+				<td><label for="cognome">Tecnico</label></td>
+				<td><select id="cognome" name="cognome">
+						<option value="0">tutti</option>
+						<option th:each="tecnico : ${tecnici}"
+							th:value="${tecnico.cognome}" th:text="${tecnico.cognome}"></option>
+				</select></td>
+			</tr> -->
+			<tr><!----------------------------------- inizio tendina Anno -------------------------------------------->
+				<td><label for="anno">Anno</label></td>
+				<td><select id="anno" name="anno">
+						<option value="0">tutti</option>
+						<option th:each="anno : ${#numbers.sequence(1995, 2050)}"
+							th:value="${anno}" th:text="${anno}"></option>
+				</select></td>
+			</tr>
+			<tr><!----------------------------------- inizio tendina Mese -------------------------------------------->
+				<td><label for="mese">Mese</label></td>
+				<td><select id="mese" name="mese">
+						<option value="0">tutti</option>
+						<option th:each="mese : ${#numbers.sequence(1, 12)}"
+							th:value="${mese}" th:text="${mese}"></option>
+				</select></td>
+			</tr>
+			<!-- <tr>
+					<input type="range" min="1" max="100" value="50" class="slider" id="costoMin">
+					<p>Minimo: <span id="min"></span></p>
+				
+			
+				<script>
+					var sliderMin = document.getElementById("costoMin");
+					var min = document.getElementById("min");
+					min.innerHTML = sliderMin.value;
+					
+					sliderMin.oninput = function() {
+						min.innerHTML = this.value;
+					}
+				</script>
+			</tr>
+			<tr>
+					<input type="range" min="1" max="100" value="50" class="slider" id="costoMax">
+					<p>Massimo: <span id="max"></span></p>
+				
+			
+				<script>
+					var sliderMax = document.getElementById("costoMax");
+					var max = document.getElementById("max");
+					max.innerHTML = sliderMax.value;
+					
+					sliderMax.oninput = function() {
+					  max.innerHTML = this.value;
+					}
+				</script>
+			</tr> -->
+		</table>
+		<input type="submit" value="filtra" />
+	</form>
 	<table>
 		<thead>
 			<tr>
 				<th>Rapporti</th>
-				
+
 			</tr>
 		</thead>
 		<tbody>
-		
-			<tr th:if="${rapporti.empty}">
+
+			<tr th:if="${rapporti == null || rapporti.empty}">
 				<td colspan="2">Nessun Rapporto Trovato</td>
 			</tr>
 			<tr th:each="rapporto : ${rapporti}">
 				<td>
-					<form action="/rapportoInserito" method = "GET">
-						<input type="hidden" id="idRapporto" name="idRapporto" th:value="${rapporto.id}">
-						<input type="submit" th:value="${rapporto.intervento.data}"/>
+					<form action="/rapportoInserito" method="GET">
+						<input type="hidden" id="idRapporto" name="idRapporto"
+							th:value="${rapporto.id}"> <input type="submit"
+							th:value="${rapporto.intervento.data}" />
 					</form>
 				</td>
 			</tr>
-			
+
 		</tbody>
 	</table>
-	<p>Torna alla home <a href="/">qui</a></p>
+	<p>
+		Torna alla home <a href="/">qui</a>
+	</p>
 </body>
 </html>

@@ -70,11 +70,30 @@ public class RapportoController {
 		
 	}
 	
-	 @GetMapping("/rapporto/find")
-	  public String trovaRapportiCliente(@RequestParam(name="idCliente") String idCliente, Model model) {
-		  Cliente cliente = new Cliente();
-		  cliente = clienteService.findById(Integer.parseInt(idCliente)).get();
-		  model.addAttribute("rapporti", cliente.getRapporti());
-	    return "mostraRapporti";
-	  }
+	//cerca e restituisce i rapporti che rispettano i criteri dati dai filtri
+	@PostMapping("/rapporto/find")
+	public String trovaRapportiCliente(@RequestParam(name="idCliente") String idCliente,
+			@RequestParam(name="anno") String anno,
+			@RequestParam(name="mese") String mese,
+			/*
+			 * @RequestParam(name="costoMax") String costoMax,
+			 * 
+			 * @RequestParam(name="costoMin") String costoMin,
+			 */
+			Model model) {
+		Cliente cliente = new Cliente();
+		cliente = clienteService.findById(Integer.parseInt(idCliente)).get();
+		List<Cliente> clienti = new ArrayList<>();
+		clienti = (List<Cliente>) clienteService.findAll();
+		List<Tecnico> tecnici = new ArrayList<>();
+		tecnici = (List<Tecnico>) tecnicoService.findAll();
+		List<Rapporto> rapporti = new ArrayList<>();
+		rapporti = rapportoService.filtraRapporti(Integer.parseInt(idCliente), anno, mese);
+		
+		model.addAttribute("clienti", clienti);
+		model.addAttribute("tecnici", tecnici);
+		model.addAttribute("cliente", cliente);
+		model.addAttribute("rapporti", rapporti);
+		return "mostraRapporti";
+	}
 }

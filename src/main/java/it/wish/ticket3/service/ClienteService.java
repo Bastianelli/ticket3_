@@ -1,5 +1,6 @@
 package it.wish.ticket3.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,8 @@ public class ClienteService {
 		return clienteRepository.findById(id);
 	}
 	public Cliente findByDenominazione(String denominazione) {
-		List<Cliente> clienti = (List<Cliente>) clienteRepository.findAll();
+		List<Cliente> clienti = new ArrayList<>();
+		clienti = (List<Cliente>) clienteRepository.findAll();
 		if(clienti.isEmpty() == false) {
 			for(Cliente cliente : clienti) {
 				if(cliente.getDenominazione().equals(denominazione)) {

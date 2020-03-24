@@ -103,6 +103,20 @@ public class Intervento {
 	}
 
 	//getter e setter
+	
+	//ritorna una stringa contenente l'anno
+	public String getAnno() {
+		return this.data.substring(0, 4);
+	}
+	//ritorna una stringa contenente il mese
+		public String getMese() {
+			return this.data.substring(5, 7);
+	}
+	//ritorna una stringa contenente il giorno
+	public String getGiorno() {
+		return this.data.substring(8);
+	}
+	
 	public Integer getId() {
 		return id;
 	}

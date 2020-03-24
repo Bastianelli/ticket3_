@@ -14,9 +14,13 @@
 	<p th:text="'Citta: ' + ${cliente.citta}" />
 	<p th:text="'Partita IVA: ' + ${cliente.partitaIva}" />
 	<br>
-	<form action="/rapporto/find" method = "GET">
+	<form action="/rapporto/find" method = "POST">
 			<input type="hidden" id="idCliente" name="idCliente" th:value="${cliente.id}">
-			<input type="submit" value="visualizza rapporti"/>
+			<input type="hidden" id="anno" name="anno" value="0">
+			<input type="hidden" id="mese" name="mese" value="0">
+			<input type="hidden" id="costoMin" name="costoMin" value="min">
+			<input type="hidden" id="costoMax" name="costoMax" value="max">
+		<input type="submit" value="visualizza rapporti"/>
 	</form>
 	<br>
 	<p>Torna alla home <a href="/">qui</a></p>
