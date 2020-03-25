@@ -43,8 +43,14 @@ class RapportoServiceTest {
 	}
 
 	@Test
-	@Disabled
-	void testFindByAnnoString() {
+	void testFiltraRapporti() {
+		assertTrue(rapportiTrovati.isEmpty());
+		rapportiTrovati = rapportoService.filtraRapporti(rapporti, "2020", "02");
+		assertFalse(rapportiTrovati.isEmpty());
+		for(Rapporto rapporto : rapportiTrovati) {
+			assertEquals("2020", rapporto.getIntervento().getAnno());
+			assertEquals("02", rapporto.getIntervento().getMese());
+		}	
 		
 	}
 
@@ -75,8 +81,28 @@ class RapportoServiceTest {
 
 	@Test
 	@Disabled
-	void testFindByMeseString() {
-		fail("Not yet implemented");
+	void testFindByAnnoString() {
+		assertNotNull(rapporti);
+		assertFalse(rapporti.isEmpty());
+		assertEquals(3, rapporti.size());
+		assertEquals("2020", rapporti.get(0).getIntervento().getAnno());
+		assertEquals("2020", rapporti.get(1).getIntervento().getAnno());
+		assertEquals("2010", rapporti.get(2).getIntervento().getAnno());
+		assertTrue(rapportiTrovati.isEmpty());
+//		rapportiTrovati.addAll(rapportoService.findByAnno(rapporti, "2020"));
+
+		rapportiTrovati = rapportoService.findByAnno("2020");
+		assertFalse(rapportiTrovati.isEmpty());
+		assertEquals(2, rapportiTrovati.size());
+		for(Rapporto rapporto : rapportiTrovati) {
+			assertEquals("2020", rapporto.getIntervento().getAnno());
+		}	
+		rapportiTrovati.clear();
+		assertTrue(rapportiTrovati.isEmpty());
+		rapportiTrovati.addAll(rapportoService.findByAnno("2010"));
+		assertFalse(rapporti.isEmpty());
+		assertEquals(1, rapportiTrovati.size());
+		assertEquals("2010", rapportiTrovati.get(0).getIntervento().getAnno());
 	}
 
 	@Test

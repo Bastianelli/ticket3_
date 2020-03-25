@@ -85,13 +85,16 @@ public class RapportoController {
 		cliente = clienteService.findById(Integer.parseInt(idCliente)).get();
 		List<Cliente> clienti = new ArrayList<>();
 		clienti = (List<Cliente>) clienteService.findAll();
-		List<Tecnico> tecnici = new ArrayList<>();
-		tecnici = (List<Tecnico>) tecnicoService.findAll();
+//		List<Tecnico> tecnici = new ArrayList<>();
+//		tecnici = (List<Tecnico>) tecnicoService.findAll();
 		List<Rapporto> rapporti = new ArrayList<>();
-		rapporti = rapportoService.filtraRapporti(Integer.parseInt(idCliente), anno, mese);
-		
+		rapporti = rapportoService.filtraRapporti(cliente, anno, mese);
+		System.out.println("id cliente = " + idCliente + "anno = " + anno + "mese = " + mese);
+		System.out.println(rapporti.toString());
+		model.addAttribute("anno", anno);
+		model.addAttribute("mese", mese);
 		model.addAttribute("clienti", clienti);
-		model.addAttribute("tecnici", tecnici);
+//		model.addAttribute("tecnici", tecnici);
 		model.addAttribute("cliente", cliente);
 		model.addAttribute("rapporti", rapporti);
 		return "mostraRapporti";
