@@ -29,13 +29,15 @@
 				</select></td>
 			</tr> -->
 			<tr><!----------------------------------- inizio tendina Anno -------------------------------------------->
+				<script>
+					var jsAnno = "[[${anno}]]";
+					console.log(jsAnno);
+				</script>
 				<td><label for="anno">Anno</label></td>
 				<td><select id="anno" name="anno">
-						<option th:if="${anno == '0'}" value="0">tutti</option>
-						<option th:unless="${anno == '0'}" value="${anno}" th:text="${anno}" selected="selected"></option>
-						<option th:each="annoLocal : ${#numbers.sequence(1995, 2050)}"
-								th:if="${annoLocal != anno}"
-									th:value="${annoLocal}" th:text="${annoLocal}"></option>
+						<option value="0">tutti</option>
+						<option th:each="anno : ${#numbers.sequence(1995, 2030)}"
+							th:value="${anno}" th:text="${anno}"></option>
 				</select></td>
 			</tr>
 			<tr><!----------------------------------- inizio tendina Mese -------------------------------------------->
@@ -43,7 +45,7 @@
 				<td><select id="mese" name="mese">
 						<option value="0">tutti</option>
 						<option th:each="mese : ${#numbers.sequence(1, 12)}"
-							th:value="${mese}" th:text="${mese}"></option>
+							th:value="${#numbers.formatInteger(mese, 2)}" th:text="${mese}"></option>
 				</select></td>
 			</tr>
 			<!-- <tr>
@@ -79,6 +81,9 @@
 		</table>
 		<input type="submit" value="filtra" />
 	</form>
+	
+
+	
 	<table>
 		<thead>
 			<tr>

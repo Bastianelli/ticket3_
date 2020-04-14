@@ -90,7 +90,8 @@ public class RapportoController {
 		List<Rapporto> rapporti = new ArrayList<>();
 		rapporti = rapportoService.filtraRapporti(cliente, anno, mese);
 		System.out.println("id cliente = " + idCliente + "anno = " + anno + "mese = " + mese);
-		System.out.println(rapporti.toString());
+		System.out.println(anno);
+		
 		model.addAttribute("anno", anno);
 		model.addAttribute("mese", mese);
 		model.addAttribute("clienti", clienti);
