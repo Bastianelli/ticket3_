@@ -3,22 +3,25 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.2.5.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
-	</parent>
+
 	<groupId>it.wish</groupId>
 	<artifactId>ticket3</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>war</packaging>
 	<name>ticket3</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
-
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.2.5.RELEASE</version>
+		<relativePath />
+		<!-- lookup parent from repository -->
+	</parent>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -37,19 +40,22 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.4.12.Final</version>
 		</dependency>
-		<dependency>
+<!-- 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-agroal</artifactId>
-			<version>5.4.12.Final</version>
 			<type>pom</type>
-		</dependency>
+		</dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
@@ -67,10 +73,22 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+ 				<!-- 			<artifactId>servlet-api</artifactId> -->
+<!-- 			<version>2.5</version> -->
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- spring security -->
@@ -87,6 +105,20 @@
 
 	<build>
 		<plugins>
+			<!-- -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-war</id>
+						<phase>prepare-package</phase>
+						<configuration>
+							<failOnMissingWebXml>false</failOnMissingWebXml>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -94,4 +126,28 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>5.4.12.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-agroal</artifactId>
+				<version>5.4.12.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.el</groupId>
+				<artifactId>javax.el-api</artifactId>
+				<version>3.0.0</version>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 </project>
